@@ -1,9 +1,12 @@
-import { Request, Response } from "express";
-import bcrypt from "bcryptjs";
-import { db } from "../config/database";
-import { generateToken } from "../utils/jwt";
+import type { Request, Response } from "express";
+import bcrypt = require("bcryptjs");
+import database = require("../config/database");
+import jwt = require("../utils/jwt");
 
-export async function register(req: Request, res: Response) {
+const { db } = database;
+const { generateToken } = jwt;
+
+async function register(req: Request, res: Response) {
   try {
     const { firstName, lastName, email, password } = req.body;
 
@@ -68,7 +71,7 @@ export async function register(req: Request, res: Response) {
  * @param res - The response object to send the result.
  */
 
-export async function login(req: Request, res: Response) {
+async function login(req: Request, res: Response) {
   try {
     const { email, password } = req.body;
 
@@ -147,3 +150,5 @@ export async function login(req: Request, res: Response) {
     });
   }
 }
+
+module.exports = { register, login };

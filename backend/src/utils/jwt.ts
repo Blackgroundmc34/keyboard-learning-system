@@ -1,9 +1,11 @@
-import jwt from "jsonwebtoken";
+import jwt = require("jsonwebtoken");
 
-export function generateToken(payload: object) {
+function generateToken(payload: object) {
   return jwt.sign(
     payload,
     process.env.JWT_SECRET as string,
     { expiresIn: "1d" }
   );
 }
+
+export = { generateToken };
