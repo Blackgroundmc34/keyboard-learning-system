@@ -1,9 +1,12 @@
-import { Request, Response } from "express";
-import bcrypt from "bcryptjs";
-import { db } from "../config/database";
-import { generateToken } from "../utils/jwt";
+import type { Request, Response } from "express";
+import bcrypt = require("bcryptjs");
+import database = require("../config/database");
+import jwt = require("../utils/jwt");
 
-export async function register(req: Request, res: Response) {
+const { db } = database;
+const { generateToken } = jwt;
+
+async function register(req: Request, res: Response) {
   try {
     const { firstName, lastName, email, password } = req.body;
 
@@ -68,7 +71,7 @@ export async function register(req: Request, res: Response) {
  * @param res - The response object to send the result.
  */
 
-export async function login(req: Request, res: Response) {
+async function login(req: Request, res: Response) {
   try {
     const { email, password } = req.body;
 
@@ -147,3 +150,72 @@ export async function login(req: Request, res: Response) {
     });
   }
 }
+
+async function getMe(req: Request, res: Response) {
+  try {
+    const authenticatedRequest = req as Request & {
+      user?: { userId: number; role: string };
+    };
+    const userId = authenticatedRequest.user?.userId;
+
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        message: "Authentication required",
+      });
+    }
+
+    const [users]: any = await db.query(
+      `SELECT id, first_name, last_name, email, role, phone,
+              profile_image_url, bio, is_active, email_verified_at,
+              last_login_at, created_at, updated_at
+       FROM users
+       WHERE id = ?
+       LIMIT 1`,
+      [userId]
+    );
+
+    if (users.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const user = users[0];
+
+    if (!user.is_active) {
+      return res.status(403).json({
+        success: false,
+        message: "Account is inactive",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      user: {
+        id: user.id,
+        firstName: user.first_name,
+        lastName: user.last_name,
+        email: user.email,
+        role: user.role,
+        phone: user.phone,
+        profileImageUrl: user.profile_image_url,
+        bio: user.bio,
+        emailVerifiedAt: user.email_verified_at,
+        lastLoginAt: user.last_login_at,
+        createdAt: user.created_at,
+        updatedAt: user.updated_at,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
+  }
+}
+
+module.exports = { register, login, getMe };

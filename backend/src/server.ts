@@ -1,6 +1,6 @@
-import dotenv from "dotenv";
-import app from "./app";
-import { db } from "./config/database";
+const dotenv = require("dotenv");
+const app = require("./app");
+const { db } = require("./config/database");
 
 dotenv.config();
 
