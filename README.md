@@ -35,8 +35,8 @@ DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=
 DB_NAME=keyboard_learning
-JWT_SECRET=replace_with_a_long_random_secret
-JWT_EXPIRES_IN=1d
+JWT_SECRET=replace_with_at_least_32_random_characters
+ADMIN_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
 
 Never commit `backend/.env`. It contains local credentials and secrets and is ignored by Git. You can verify this from the project root with:
@@ -47,6 +47,27 @@ git ls-files backend/.env
 ```
 
 The first command should show the matching `.gitignore` rule. The second command should print nothing, confirming that the file is not tracked.
+
+For production, use a dedicated database account with only the permissions the application needs instead of the MySQL root account. Generate a unique JWT secret of at least 32 characters and set `ADMIN_ORIGINS` to the exact HTTPS origin serving the dashboard.
+
+## Create the database schema
+
+[`backend/database/keyboard_learning.sql`](backend/database/keyboard_learning.sql) is the complete structure-only export for all 18 application tables. It contains no users, passwords, tokens, enrollments, messages, or other live records.
+
+Start MySQL in XAMPP, then create the database and import the schema from the project root:
+
+```bash
+/Applications/XAMPP/xamppfiles/bin/mysql \
+  --user=root \
+  -e "CREATE DATABASE IF NOT EXISTS keyboard_learning CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+/Applications/XAMPP/xamppfiles/bin/mysql \
+  --user=root keyboard_learning < backend/database/keyboard_learning.sql
+```
+
+If the root database user requires a password, add `--password` and enter it when prompted.
+
+The schema file contains `DROP TABLE IF EXISTS` statements so it can recreate tables in the correct foreign-key structure. Import it into a new or disposable local database. Importing it over a populated database deletes existing application data; back up important data first. Use `seed.sql` below when you only want to add the reusable development course without recreating the schema.
 
 ## Check TypeScript
 

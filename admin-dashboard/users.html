@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' http: https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'">
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users | Keyboard Learning System</title>
+    <link rel="stylesheet" href="dashboard.css" /><link rel="stylesheet" href="users.css" /><link rel="stylesheet" href="admin-modal.css" />
+  </head>
+  <body>
+    <admin-layout page-title="Users" active-page="users">
+      <main>
+        <div class="breadcrumbs"><a href="dashboard.html">Dashboard</a><span>›</span><strong>Users</strong></div>
+        <section class="page-heading"><div><h2>Users</h2><p>Manage students, instructors, and administrators</p></div><button class="primary-action" id="add-user" type="button"><span>＋</span>Add New User</button></section>
+        <section class="user-stats">
+          <article><i class="purple">♙</i><div><span>Total Users</span><strong id="total-users">—</strong><small>All accounts</small></div></article>
+          <article><i class="blue">♙</i><div><span>Students</span><strong id="total-students">—</strong><small>Student accounts</small></div></article>
+          <article><i class="green">♙</i><div><span>Instructors</span><strong id="total-instructors">—</strong><small>Teaching accounts</small></div></article>
+          <article><i class="orange">♙</i><div><span>Admins</span><strong id="total-admins">—</strong><small>Admin accounts</small></div></article>
+        </section>
+        <section class="users-panel">
+          <div class="filters"><label><span>⌕</span><input id="user-search" type="search" placeholder="Search users..." /></label><select id="role-filter"><option value="ALL">All roles</option><option value="STUDENT">Students</option><option value="INSTRUCTOR">Instructors</option><option value="ADMIN">Admins</option></select><select id="status-filter"><option value="ALL">All statuses</option><option value="ACTIVE">Active</option><option value="INACTIVE">Inactive</option></select></div>
+          <div id="user-message" class="user-message"></div>
+          <div class="table-wrap"><table><thead><tr><th>User</th><th>Role</th><th>Phone</th><th>Status</th><th>Email Verified</th><th>Last Login</th><th>Joined</th><th>Actions</th></tr></thead><tbody id="users-body"></tbody></table></div>
+          <div class="table-footer" id="user-result-count">Loading users…</div>
+        </section><footer>© 2026 Keyboard Learning System. All rights reserved.</footer>
+      </main>
+    </admin-layout>
+    <script src="components/admin-auth.js"></script><script src="components/admin-topbar.js"></script><script src="components/admin-layout.js"></script><script src="components/admin-modal.js"></script><script src="users.js"></script>
+  </body>
+</html>
