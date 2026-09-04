@@ -35,8 +35,8 @@ DB_PORT=3306
 DB_USER=root
 DB_PASSWORD=
 DB_NAME=keyboard_learning
-JWT_SECRET=replace_with_a_long_random_secret
-JWT_EXPIRES_IN=1d
+JWT_SECRET=replace_with_at_least_32_random_characters
+ADMIN_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
 
 Never commit `backend/.env`. It contains local credentials and secrets and is ignored by Git. You can verify this from the project root with:
@@ -47,6 +47,8 @@ git ls-files backend/.env
 ```
 
 The first command should show the matching `.gitignore` rule. The second command should print nothing, confirming that the file is not tracked.
+
+For production, use a dedicated database account with only the permissions the application needs instead of the MySQL root account. Generate a unique JWT secret of at least 32 characters and set `ADMIN_ORIGINS` to the exact HTTPS origin serving the dashboard.
 
 ## Create the database schema
 
