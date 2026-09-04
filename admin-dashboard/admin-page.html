@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' http: https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Keyboard Learning System</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="admin-page.css" />
+  </head>
+  <body>
+    <admin-layout id="page-layout" page-title="Admin">
+      <main>
+        <div class="breadcrumbs"><a href="dashboard.html">Dashboard</a><span>›</span><strong id="breadcrumb-title">Admin</strong></div>
+        <section class="page-heading">
+          <div><h2 id="page-title">Admin</h2><p id="page-subtitle">Manage platform records</p></div>
+          <button class="primary-action" id="page-action" type="button"><span>＋</span>Add New</button>
+        </section>
+        <section class="resource-summary">
+          <article><i class="purple">▦</i><div><span>Total Records</span><strong id="record-total">—</strong><small>Live database results</small></div></article>
+        </section>
+        <section class="resource-panel">
+          <div class="resource-tools">
+            <label><span>⌕</span><input id="record-search" type="search" placeholder="Search records..." /></label>
+            <button id="refresh-button" type="button">↻ Refresh</button>
+          </div>
+          <div id="page-message" class="page-message" role="status"></div>
+          <div class="table-wrap"><table><thead><tr id="resource-head"></tr></thead><tbody id="resource-body"></tbody></table></div>
+          <div class="table-footer" id="result-count">Loading records…</div>
+        </section>
+        <footer>© 2026 Keyboard Learning System. All rights reserved.</footer>
+      </main>
+    </admin-layout>
+    <script src="components/admin-auth.js"></script>
+    <script src="components/admin-topbar.js"></script>
+    <script src="components/admin-layout.js"></script>
+    <script src="admin-page.js"></script>
+  </body>
+</html>

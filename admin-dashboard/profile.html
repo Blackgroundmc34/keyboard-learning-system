@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' http: https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile | Keyboard Learning System</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="profile.css" />
+  </head>
+  <body>
+    <admin-layout page-title="Profile">
+      <main>
+        <div class="breadcrumbs"><a href="dashboard.html">Dashboard</a><span>›</span><strong>Profile</strong></div>
+        <section class="page-heading"><div><h2>My Profile</h2><p>Manage your personal information and account details</p></div><button id="edit-button" class="primary-action" type="button">✎ Edit Profile</button></section>
+
+        <section class="profile-summary">
+          <div class="large-avatar" id="profile-avatar">A</div>
+          <div class="identity"><div><h3 id="profile-name">Loading…</h3><span id="profile-role">Administrator</span></div><p>✉ <span id="profile-email">—</span></p><p>☎ <span id="profile-phone">Not provided</span></p><p>▣ Joined <span id="profile-created">—</span></p></div>
+          <div class="account-facts"><div><small>Role</small><strong id="fact-role">—</strong></div><div><small>Account Status</small><strong class="good">Active</strong></div><div><small>Email Verified</small><strong id="fact-verified">Not verified</strong></div><div><small>Last Login</small><strong id="fact-login">—</strong></div></div>
+        </section>
+
+        <section class="profile-grid">
+          <form id="profile-form" class="profile-form">
+            <div class="form-title"><h3>Personal Information</h3><p>Fields become editable after selecting Edit Profile.</p></div>
+            <div id="profile-message" class="profile-message" role="status"></div>
+            <div class="fields">
+              <label>First Name<input id="first-name" required disabled /></label>
+              <label>Last Name<input id="last-name" required disabled /></label>
+              <label>Email Address<input id="email" type="email" required disabled /></label>
+              <label>Phone Number<input id="phone" type="tel" disabled /></label>
+              <label class="bio-field">Bio<textarea id="bio" rows="4" disabled></textarea></label>
+            </div>
+            <div class="form-actions" id="form-actions" hidden><button class="save" type="submit">Save Changes</button><button id="cancel-button" type="button">Cancel</button></div>
+          </form>
+          <aside class="security-column">
+            <article><i class="purple">▣</i><div><h3>Change Password</h3><p>Password management will be added as a separate secure flow.</p><button type="button" disabled>Coming soon</button></div></article>
+            <article><i class="green">✓</i><div><h3>Secure Account</h3><p>Your profile is protected by JWT authentication and administrator authorization.</p></div></article>
+          </aside>
+        </section>
+        <footer>© 2026 Keyboard Learning System. All rights reserved.</footer>
+      </main>
+    </admin-layout>
+    <script src="components/admin-auth.js"></script>
+    <script src="components/admin-topbar.js"></script>
+    <script src="components/admin-layout.js"></script>
+    <script src="profile.js"></script>
+  </body>
+</html>

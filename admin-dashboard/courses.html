@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' http: https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses | Keyboard Learning System</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="courses.css" />
+    <link rel="stylesheet" href="admin-modal.css" />
+  </head>
+  <body>
+    <admin-layout page-title="Courses" active-page="courses">
+      <main>
+        <div class="breadcrumbs"><a href="dashboard.html">Dashboard</a><span>›</span><strong>Courses</strong></div>
+        <section class="page-heading">
+          <div><h2>Courses</h2><p>Manage all courses in the platform</p></div>
+          <button class="primary-action" id="add-course" type="button"><span>＋</span>Add New Course</button>
+        </section>
+
+        <section class="course-stats" aria-label="Course totals">
+          <article><i class="purple">▣</i><div><span>Total Courses</span><strong id="course-total">—</strong><small>All course records</small></div></article>
+          <article><i class="green">✓</i><div><span>Published</span><strong id="course-published">—</strong><small>Visible to students</small></div></article>
+          <article><i class="orange">◷</i><div><span>Draft</span><strong id="course-drafts">—</strong><small>Not yet published</small></div></article>
+        </section>
+
+        <section class="course-panel">
+          <div class="filters">
+            <label class="course-search"><span>⌕</span><input id="course-search" type="search" placeholder="Search courses..." /></label>
+            <select id="status-filter" aria-label="Filter by status"><option value="ALL">All statuses</option><option value="PUBLISHED">Published</option><option value="DRAFT">Draft</option></select>
+            <select id="level-filter" aria-label="Filter by level"><option value="ALL">All levels</option><option value="BEGINNER">Beginner</option><option value="INTERMEDIATE">Intermediate</option><option value="ADVANCED">Advanced</option><option value="ALL_LEVELS">All levels course</option></select>
+          </div>
+          <div id="course-message" class="course-message" role="status"></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Course</th><th>Instructor</th><th>Level</th><th>Lessons</th><th>Students</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead>
+              <tbody id="courses-body"></tbody>
+            </table>
+          </div>
+          <div class="table-footer"><span id="course-result-count">Loading courses…</span></div>
+        </section>
+        <footer>© 2026 Keyboard Learning System. All rights reserved.</footer>
+      </main>
+    </admin-layout>
+    <script src="components/admin-auth.js"></script>
+    <script src="components/admin-topbar.js"></script>
+    <script src="components/admin-layout.js"></script>
+    <script src="components/admin-modal.js"></script>
+    <script src="courses.js"></script>
+  </body>
+</html>

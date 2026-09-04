@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' http: https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Keyboard Learning System admin login" />
+    <title>Admin Login | Keyboard Learning System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="login-shell">
+      <section class="brand-panel" aria-label="Keyboard Learning System">
+        <div class="brand-content">
+          <div class="music-notes" aria-hidden="true"><span>♪</span><span>♫</span><span>♪</span></div>
+          <div class="keyboard-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <h1>Keyboard</h1>
+          <p class="brand-name">Learning System</p>
+          <span class="brand-rule"></span>
+          <h2>Admin Dashboard</h2>
+          <p class="brand-copy">Manage users, courses, lessons, progress and system settings from one powerful dashboard.</p>
+        </div>
+        <div class="staff" aria-hidden="true"><span>𝄞</span><span>♪</span><span>♫</span><span>♪</span><span>♫</span></div>
+      </section>
+
+      <section class="form-panel">
+        <div class="form-wrap">
+          <header>
+            <h2>Welcome Back, Admin!</h2>
+            <p>Sign in to access the admin dashboard</p>
+            <span class="heading-rule"></span>
+          </header>
+
+          <form id="login-form" novalidate>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <div class="input-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" /></svg>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="admin@example.com" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="password">Password</label>
+              <div class="input-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3M5 10h14v11H5V10Zm7 5v2" /></svg>
+                <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required />
+                <button class="visibility" id="toggle-password" type="button" aria-label="Show password">
+                  <svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Zm10 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <span class="session-note">For security, sign-in lasts only for this browser tab.</span>
+              <a href="#" id="forgot-password">Forgot password?</a>
+            </div>
+
+            <div id="form-message" class="form-message" role="alert" aria-live="polite"></div>
+
+            <button id="submit-button" class="sign-in" type="submit">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3M5 10h14v11H5V10Zm7 5v2" /></svg>
+              <span>Sign In</span>
+            </button>
+
+            <div class="divider"><span>or</span></div>
+            <a class="back-link" href="/">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4Z" /></svg>
+              Back to Main Site
+            </a>
+          </form>
+          <footer>© 2026 Keyboard Learning System. All rights reserved.</footer>
+        </div>
+      </section>
+    </main>
+    <script src="app.js?v=20260904-security-fix"></script>
+  </body>
+</html>

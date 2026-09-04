@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' http: https:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Keyboard Learning System</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <admin-layout page-title="Dashboard" active-page="dashboard">
+      <main>
+        <section class="welcome">
+          <div><h2>Welcome back, <span id="welcome-name">Admin</span>! 👋</h2><p>Here’s what’s happening with your platform today.</p></div>
+          <div class="today" id="today">Today</div>
+        </section>
+
+        <section class="stats" aria-label="Platform totals">
+          <article><i class="purple">♙</i><div><span>Total Users</span><strong id="total-users">—</strong><small>All registered accounts</small></div></article>
+          <article><i class="blue">▣</i><div><span>Total Courses</span><strong id="total-courses">—</strong><small>Published and drafts</small></div></article>
+          <article><i class="green">▷</i><div><span>Total Lessons</span><strong id="total-lessons">—</strong><small>Across all courses</small></div></article>
+          <article><i class="orange">◇</i><div><span>Total Enrollments</span><strong id="total-enrollments">—</strong><small>All-time enrollments</small></div></article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel overview">
+            <div class="panel-title"><h3>Platform Overview</h3><span>Live totals</span></div>
+            <div class="bars" id="overview-bars"></div>
+          </article>
+          <article class="panel roles">
+            <div class="panel-title"><h3>Users by Role</h3></div>
+            <div class="role-content">
+              <div class="donut" id="role-donut"><span id="role-total">0</span><small>users</small></div>
+              <ul>
+                <li><i class="student"></i><span>Students</span><strong id="role-students">0</strong></li>
+                <li><i class="instructor"></i><span>Instructors</span><strong id="role-instructors">0</strong></li>
+                <li><i class="admin"></i><span>Admins</span><strong id="role-admins">0</strong></li>
+              </ul>
+            </div>
+          </article>
+          <article class="panel list-panel">
+            <div class="panel-title"><h3>Recent Enrollments</h3><a href="#">View All</a></div>
+            <div id="recent-enrollments" class="data-list"></div>
+          </article>
+          <article class="panel list-panel">
+            <div class="panel-title"><h3>Top Courses</h3><a href="#">View All</a></div>
+            <div id="top-courses" class="data-list"></div>
+          </article>
+          <article class="panel quick-panel">
+            <div class="panel-title"><h3>Quick Actions</h3></div>
+            <button type="button"><i class="purple">＋</i><span><strong>Add a course</strong><small>Create new learning content</small></span></button>
+            <button type="button"><i class="blue">♙</i><span><strong>Manage users</strong><small>Review platform accounts</small></span></button>
+            <button type="button"><i class="green">▥</i><span><strong>View reports</strong><small>Track student outcomes</small></span></button>
+          </article>
+        </section>
+        <footer>© 2026 Keyboard Learning System. All rights reserved.</footer>
+      </main>
+    </admin-layout>
+    <script src="components/admin-auth.js"></script>
+    <script src="components/admin-topbar.js"></script>
+    <script src="components/admin-layout.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
